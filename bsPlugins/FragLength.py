@@ -47,7 +47,7 @@ class FragLengthPlugin(BasePlugin):
                 raise ValueError("Empty range: %i:%i" %(minlength,maxlength))
         all_tracks = []
         for bam in bamfiles:
-            tname = bam.filename.split("/")[-1].split(".")[0]+"_minlength"+str(minlength)+"_maxlength"+str(maxlength)+".bam"
+            tname = "%s_min%i_max%i.bam"%(bam.name, minlength, maxlength)
             outname = self.temporary_path(fname=tname)
             all_tracks.append(outname)
             trout = pysam.Samfile(outname, "wb", template=bam)

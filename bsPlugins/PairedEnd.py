@@ -1,6 +1,5 @@
 from bsPlugins import *
 from bbcflib.track import track
-from bbcflib import genrep
 import rpy2.robjects as robjects
 import rpy2.robjects.numpy2ri as numpy2ri
 import os, tarfile
@@ -121,7 +120,7 @@ title(main=main,outer=T)
 
         for bam in bamfiles:
             if not plot_only:
-                tname = "%s_frags.%s" %(bam.name.split("/")[-1], format)
+                tname = "%s_frags.%s" %(bam.name, format)
                 outname = self.temporary_path(fname=tname)
                 all_tracks.append(outname)
                 trout = track(outname, fields=_f, chrmeta=bam.chrmeta,

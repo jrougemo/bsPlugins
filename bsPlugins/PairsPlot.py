@@ -158,14 +158,16 @@ class PairsPlotPlugin(BasePlugin):
                         if (narr is not None and nplot < _MAX_PLOTS_):
                             pairs(narr, xarr, labels=snames, output=pdf, new=_new, last=False)
                             _new = False
-                        narr = correlation([s.read(fields=_f) for s in signals], [feature], (-cormax, cormax), True)
+                        narr = correlation([s.read(fields=_f) for s in signals],
+                                           [feature], (-cormax, cormax), True)
                         list_corr = list(narr[0][0])
                         max_corr = max(list_corr)
                         lag_max = list_corr.index(max_corr)-cormax
                         t.write("\t".join([str(x) for x in
                                            feature[:3]+(max_corr,lag_max)])+"\n")
                 else:
-                    narr = correlation([s.read(fields=_f) for s in signals], features, (-cormax, cormax), True)
+                    narr = correlation([s.read(fields=_f) for s in signals], 
+                                       features, (-cormax, cormax), True)
                     list_corr = list(narr[0][0])
                     max_corr = max(list_corr)
                     lag_max = list_corr.index(max_corr)-cormax
